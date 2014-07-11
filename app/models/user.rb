@@ -4,8 +4,8 @@ class User < ActiveRecord::Base
   validates :first_name, presence: true
   validates :last_name, presence: true
   validates :username, presence: true, uniqueness: true
-  validates :email, presence: true, uniqueness: true, format: { with: /\A[a-zA-Z]+\z/, message: "only allows letters" }
-  validates :password, presence: true, format: { with: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/ }
+  validates :email, presence: true, uniqueness: true, format: { with: /^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$/ }
+  validates :password, presence: true
 
   def password
     @password ||= Password.new(password_hash)

@@ -1,4 +1,11 @@
 <div class="container">
 	<p>Your user id number is--</p>
   <p><%= session[:user_id] %></p>
+
+  upload a photo--
+  <form action="/fileupload" method="post" enctype="multipart/form-data">
+    <input type="file" name="upload"><br>
+    <button type="submit">Upload!</button>
+  </form>
+
 </div>

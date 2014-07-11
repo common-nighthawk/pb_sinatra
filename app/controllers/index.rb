@@ -9,7 +9,7 @@ end
 
 post '/signup' do
 	@current_user = User.new(first_name: params[:first_name], last_name: params[:last_name], username: params[:username], 
-                           email: params[:email], password: params[:password])
+                           email: params[:email].downcase, password: params[:password])
 	if params[:password] != params[:confirm_password]
 		session[:message] = "Your password confirmation did not match.  Please try again."
 	  redirect back
@@ -46,4 +46,9 @@ end
 get '/logout' do
 	session[:user_id] = nil
 	erb :index
+end
+
+post '/fileupload' do
+  current_photo = Photo.new :filepath => params[:upload]
+  current_photo.save
 end
