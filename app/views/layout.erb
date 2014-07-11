@@ -1,23 +1,37 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <!-- 
-    normalize.css removes cross-browser differences in defaults, e.g.,
-    differences in how form elements appear between Firefox and IE
-    See: http://necolas.github.com/normalize.css/
-  -->
   <link rel="stylesheet" href="/css/normalize.css">
-  <!--
-    application.css is where you put your styles
-  -->
   <link rel="stylesheet" href="/css/application.css">
 
   <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
   <script src="/js/application.js"></script>
 
-  <title></title>
+  <title>PictureBook MyLife</title>
 </head>
 <body>
+  <div id="nav">
+    <% if session[:user_id] == nil %>
+      <div class="nav_left"><a class="nav_left" href="/login">Log In</a></div>
+      <div class="nav_right"><a class="nav_right" href="/signup">Sign Up</a></div>
+    <% else %>
+      <div class="nav_left"><a class="nav_left" href="/users/<%= session[:user_id] %>">My Profile</a></div>
+      <div class="nav_right"><a class="nav_right" href="/logout">Log Out</a></div>
+    <% end %>
+    
+    <div id="nav_logo">
+      <a href='/'>
+        <img id="logo_image" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSQ5CrZ0PPL_2apfGoKbjcGWykF_DXwMjIR9HX0Cz9i-OF1CRjD94uNeSZm">
+      </a>
+    </div>
+  </div>
+
+  <% if session[:message] != nil %>
+    <div class="container">
+      <div id="message"><%= session[:message] %></div>
+    </div>
+  <% end %>
+
   <%= yield %>
 </body>
 </html>
