@@ -42,4 +42,4 @@ CarrierWave.configure do |config|
 	config.store_dir = 'uploads/tmp'
 end
 
-HERE IS MY SECRET test 2
+HERE IS MY SECRET test 2455
