@@ -41,3 +41,5 @@ CarrierWave.configure do |config|
 	config.root = APP_ROOT
 	config.store_dir = 'uploads/tmp'
 end
+
+HERE IS MY SECRET
